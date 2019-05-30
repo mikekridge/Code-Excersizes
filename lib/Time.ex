@@ -6,20 +6,21 @@ defmodule Challenge.Time do
   end
 
   def time_from_now(num, "seconds") do
-    time = Timex.shift(Timex.now(), seconds: num)
-    Timex.Time.to_12hour_clock(time.hour)
+    zone = Timezone.convert(Timex.now(), Timex.Timezone.local())
+    shifted = Timex.shift(zone, seconds: num)
+    Timex.format(shifted, "{h12}:{0m}:{s} {AM}")
   end
 
   def time_from_now(num, "minutes") do
     zone = Timezone.convert(Timex.now(), Timex.Timezone.local())
     shifted = Timex.shift(zone, minutes: num)
-    Timex.format(shifted, "{0H}-{0M}-{0S}")
+    Timex.format(shifted, "{h12}:{0m} {AM}")
   end
 
   def time_from_now(num, "hours") do
     zone = Timezone.convert(Timex.now(), Timex.Timezone.local())
     shifted = Timex.shift(zone, hours: num)
-    Timex.format(shifted, "{0H}-{0m}")
+    Timex.format(shifted, "{h12}:{0m} {AM}")
   end
 
   def time_from_now(num, "days") do
