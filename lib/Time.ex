@@ -1,4 +1,4 @@
-defmodule Challenge.Time do
+defmodule Time do
   use Timex
 
   def time_from_now(num, _) when not is_integer(num) do
