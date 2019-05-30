@@ -1,6 +1,6 @@
 {application,qacode,
              [{applications,[kernel,stdlib,elixir,logger,timex]},
               {description,"qacode"},
-              {modules,['Elixir.Qacode','Elixir.Time']},
+              {modules,['Elixir.Time']},
               {registered,[]},
               {vsn,"0.1.0"}]}.
